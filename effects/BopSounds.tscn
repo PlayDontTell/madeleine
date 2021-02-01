@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sound/Bop_7.wav" type="AudioStream" id=1]
+[ext_resource path="res://sound/Bop_5.wav" type="AudioStream" id=2]
+[ext_resource path="res://sound/Bop_1.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/Bop_6.wav" type="AudioStream" id=4]
+[ext_resource path="res://sound/Bop_3.wav" type="AudioStream" id=5]
+[ext_resource path="res://sound/Bop_4.wav" type="AudioStream" id=6]
+[ext_resource path="res://sound/Bop_2.wav" type="AudioStream" id=7]
+[ext_resource path="res://sound/Bop_8.wav" type="AudioStream" id=8]
+
+[node name="BopSounds" type="Node2D"]
+
+[node name="Bop_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Meta"
+
+[node name="Bop_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "Meta"
+
+[node name="Bop_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Meta"
+
+[node name="Bop_4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "Meta"
+
+[node name="Bop_5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Meta"
+
+[node name="Bop_6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Meta"
+
+[node name="Bop_7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Meta"
+
+[node name="Bop_8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "Meta"

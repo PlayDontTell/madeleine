@@ -1,0 +1,109 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://effects/vignette.png" type="Texture" id=1]
+[ext_resource path="res://levels/EndScreen.gd" type="Script" id=2]
+[ext_resource path="res://effects/Fade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/end_screen_foreground.png" type="Texture" id=4]
+[ext_resource path="res://sprites/end_screen_background.png" type="Texture" id=5]
+[ext_resource path="res://sprites/train_2.png" type="Texture" id=6]
+[ext_resource path="res://sprites/title_screen_sky.png" type="Texture" id=7]
+[ext_resource path="res://effects/Cursor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/train_door_back.png" type="Texture" id=9]
+[ext_resource path="res://effects/Cadre.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/train_door.png" type="Texture" id=11]
+[ext_resource path="res://effects/Illumination.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/final_photo.png" type="Texture" id=13]
+[ext_resource path="res://sound/TrainArrival.wav" type="AudioStream" id=14]
+[ext_resource path="res://sound/smoke.wav" type="AudioStream" id=15]
+[ext_resource path="res://sound/sliding_had_door.wav" type="AudioStream" id=16]
+[ext_resource path="res://sound/PhotographSound.wav" type="AudioStream" id=17]
+[ext_resource path="res://sprites/final_photo_colored.png" type="Texture" id=18]
+
+[node name="EndScreen" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sky" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Train" type="Sprite" parent="."]
+position = Vector2( -1350, 33 )
+texture = ExtResource( 6 )
+centered = false
+offset = Vector2( 772, 0 )
+
+[node name="DoorBack" type="Sprite" parent="Train"]
+show_behind_parent = true
+position = Vector2( 1026, 0 )
+scale = Vector2( 30, 1 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="Door" type="Sprite" parent="Train"]
+show_behind_parent = true
+position = Vector2( 1039, 24 )
+texture = ExtResource( 11 )
+
+[node name="Foreground" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Vignette" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.25098 )
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fade" parent="." instance=ExtResource( 3 )]
+
+[node name="Photo" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 13 )
+offset = Vector2( 96, 54 )
+
+[node name="PhotoColored" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 18 )
+offset = Vector2( 96, 54 )
+
+[node name="Illumination" parent="." instance=ExtResource( 12 )]
+
+[node name="Cadre" parent="." instance=ExtResource( 10 )]
+
+[node name="Cursor" parent="." instance=ExtResource( 8 )]
+position = Vector2( -30.4787, 25.7567 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="TrainArrivalSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+bus = "Atm"
+
+[node name="SmokeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -24.0
+bus = "Atm"
+
+[node name="DoorSlidingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -18.0
+bus = "Atm"
+
+[node name="Flash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+bus = "Fx"

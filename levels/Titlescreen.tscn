@@ -1,0 +1,286 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://effects/vignette.png" type="Texture" id=1]
+[ext_resource path="res://levels/Titlescreen.gd" type="Script" id=2]
+[ext_resource path="res://effects/Fade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/title_screen_foreground.png" type="Texture" id=4]
+[ext_resource path="res://sprites/title_screen_background.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Train_Tracks.png" type="Texture" id=6]
+[ext_resource path="res://sprites/title_screen_sky.png" type="Texture" id=7]
+[ext_resource path="res://effects/Cursor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sound/Nature.wav" type="AudioStream" id=9]
+[ext_resource path="res://effects/Cadre.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/title_1.png" type="Texture" id=11]
+[ext_resource path="res://sprites/title_2.png" type="Texture" id=12]
+[ext_resource path="res://sprites/table.png" type="Texture" id=13]
+[ext_resource path="res://sprites/Butterfly.png" type="Texture" id=14]
+[ext_resource path="res://sound/WindSound.wav" type="AudioStream" id=15]
+[ext_resource path="res://scripts/Clickable.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/train.png" type="Texture" id=17]
+[ext_resource path="res://sound/TrainPassingSound.wav" type="AudioStream" id=18]
+[ext_resource path="res://sprites/interior_scene.png" type="Texture" id=20]
+[ext_resource path="res://effects/BackgroundParticle_1.png" type="Texture" id=21]
+[ext_resource path="res://sprites/madeleines.png" type="Texture" id=22]
+[ext_resource path="res://sprites/closed_eyes.png" type="Texture" id=23]
+[ext_resource path="res://levels/TrainInteriorScene.gd" type="Script" id=24]
+[ext_resource path="res://levels/TrainPassing.gd" type="Script" id=25]
+[ext_resource path="res://sprites/Head.png" type="Texture" id=26]
+[ext_resource path="res://levels/TableScene.gd" type="Script" id=27]
+[ext_resource path="res://sprites/madeleine_1.png" type="Texture" id=28]
+[ext_resource path="res://sound/EatingSound.wav" type="AudioStream" id=29]
+[ext_resource path="res://sprites/madeleine_2.png" type="Texture" id=30]
+[ext_resource path="res://levels/Madeleine_2.gd" type="Script" id=31]
+[ext_resource path="res://levels/Madeleine_1.gd" type="Script" id=32]
+[ext_resource path="res://sprites/chocolate.png" type="Texture" id=33]
+[ext_resource path="res://levels/Chocolate.gd" type="Script" id=34]
+[ext_resource path="res://sound/DrinkingSound.wav" type="AudioStream" id=35]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 12.539
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 16.0
+
+[sub_resource type="Curve" id=3]
+min_value = 0.99
+max_value = 2.0
+_data = [ Vector2( 0.0344828, 0.99033 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.49156 ), -0.00202788, 0.0, 0, 0 ]
+
+[sub_resource type="CapsuleShape2D" id=4]
+height = 8.0
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 10, 9 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 14 )
+region = Rect2( 10, 0, 10, 9 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 7.07107
+
+[node name="Titlescreen" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TableScene" type="Node2D" parent="."]
+script = ExtResource( 27 )
+
+[node name="Background" type="Sprite" parent="TableScene"]
+texture = ExtResource( 13 )
+centered = false
+
+[node name="Madeleine_1" type="Sprite" parent="TableScene"]
+position = Vector2( 92, 42 )
+texture = ExtResource( 28 )
+script = ExtResource( 32 )
+
+[node name="Clickable" parent="TableScene/Madeleine_1" instance=ExtResource( 16 )]
+
+[node name="CollisionShape2D" parent="TableScene/Madeleine_1/Clickable" index="0"]
+rotation = -0.766538
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Tween" type="Tween" parent="TableScene/Madeleine_1"]
+
+[node name="Madeleine_2" type="Sprite" parent="TableScene"]
+position = Vector2( 59, 64 )
+texture = ExtResource( 30 )
+script = ExtResource( 31 )
+
+[node name="Clickable" parent="TableScene/Madeleine_2" instance=ExtResource( 16 )]
+
+[node name="CollisionShape2D" parent="TableScene/Madeleine_2/Clickable" index="0"]
+position = Vector2( 0, -2 )
+rotation = -1.28984
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Tween" type="Tween" parent="TableScene/Madeleine_2"]
+
+[node name="Chocolate" type="Sprite" parent="TableScene"]
+position = Vector2( 127, 17 )
+texture = ExtResource( 33 )
+script = ExtResource( 34 )
+
+[node name="Clickable" parent="TableScene/Chocolate" instance=ExtResource( 16 )]
+
+[node name="CollisionShape2D" parent="TableScene/Chocolate/Clickable" index="0"]
+position = Vector2( 0, 13 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Tween" type="Tween" parent="TableScene/Chocolate"]
+
+[node name="DrinkingSound" type="AudioStreamPlayer" parent="TableScene/Chocolate"]
+stream = ExtResource( 35 )
+bus = "Fx"
+
+[node name="EatingSound" type="AudioStreamPlayer" parent="TableScene"]
+stream = ExtResource( 29 )
+bus = "Fx"
+
+[node name="TrainInteriorScene" type="Node2D" parent="."]
+script = ExtResource( 24 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TrainInteriorScene"]
+position = Vector2( -44, 9 )
+rotation = 0.0704522
+scale = Vector2( 64, 1.15 )
+amount = 14
+lifetime = 0.6
+draw_order = 1
+texture = ExtResource( 21 )
+emission_shape = 2
+emission_rect_extents = Vector2( 0, 2 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 8.0
+scale_amount_curve = SubResource( 3 )
+color = Color( 0.835294, 0.835294, 0.835294, 1 )
+
+[node name="Background" type="Sprite" parent="TrainInteriorScene"]
+texture = ExtResource( 20 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ClosedEyes" type="Sprite" parent="TrainInteriorScene"]
+visible = false
+position = Vector2( 76, 19 )
+texture = ExtResource( 23 )
+
+[node name="Madeleines" type="Sprite" parent="TrainInteriorScene"]
+position = Vector2( 106, 55 )
+texture = ExtResource( 22 )
+
+[node name="Clickable" parent="TrainInteriorScene/Madeleines" instance=ExtResource( 16 )]
+
+[node name="CollisionShape2D" parent="TrainInteriorScene/Madeleines/Clickable" index="0"]
+visible = false
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Head" type="Sprite" parent="TrainInteriorScene"]
+position = Vector2( 74, 18 )
+texture = ExtResource( 26 )
+hframes = 3
+
+[node name="TrainPassing" type="Node2D" parent="."]
+script = ExtResource( 25 )
+title_amplitude = 1.0
+
+[node name="Sky" type="Sprite" parent="TrainPassing"]
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="Sprite" parent="TrainPassing"]
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TrainTracks" type="Sprite" parent="TrainPassing"]
+position = Vector2( 0, 63 )
+texture = ExtResource( 6 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Train" type="Sprite" parent="TrainPassing"]
+position = Vector2( -1350, 33 )
+texture = ExtResource( 17 )
+centered = false
+
+[node name="Title1" type="Sprite" parent="TrainPassing"]
+texture = ExtResource( 11 )
+offset = Vector2( 96, 20 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title2" type="Sprite" parent="TrainPassing"]
+texture = ExtResource( 12 )
+offset = Vector2( 96, 20 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Butterfly" type="AnimatedSprite" parent="TrainPassing"]
+position = Vector2( -9, 4 )
+frames = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Clickable" parent="TrainPassing/Butterfly" instance=ExtResource( 16 )]
+
+[node name="CollisionShape2D" parent="TrainPassing/Butterfly/Clickable" index="0"]
+shape = SubResource( 8 )
+
+[node name="Foreground" type="Sprite" parent="TrainPassing"]
+texture = ExtResource( 4 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NatureSound" type="AudioStreamPlayer" parent="TrainPassing"]
+stream = ExtResource( 9 )
+volume_db = -12.0
+bus = "Atm"
+
+[node name="WindSound" type="AudioStreamPlayer" parent="TrainPassing"]
+stream = ExtResource( 15 )
+bus = "Fx"
+
+[node name="TrainPassingSound" type="AudioStreamPlayer" parent="TrainPassing"]
+stream = ExtResource( 18 )
+bus = "Fx"
+
+[node name="Vignette" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.25098 )
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fade" parent="." instance=ExtResource( 3 )]
+
+[node name="Cadre" parent="." instance=ExtResource( 10 )]
+
+[node name="Cursor" parent="." instance=ExtResource( 8 )]
+position = Vector2( -30.4787, 25.7567 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="input_event" from="TableScene/Madeleine_1/Clickable" to="TableScene/Madeleine_1" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="TableScene/Madeleine_2/Clickable" to="TableScene/Madeleine_2" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="TableScene/Chocolate/Clickable" to="TableScene/Chocolate" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="TrainInteriorScene/Madeleines/Clickable" to="TrainInteriorScene" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="TrainPassing/Butterfly/Clickable" to="." method="_on_Clickable_input_event"]
+
+[editable path="TableScene/Madeleine_1/Clickable"]
+
+[editable path="TableScene/Madeleine_2/Clickable"]
+
+[editable path="TableScene/Chocolate/Clickable"]
+
+[editable path="TrainInteriorScene/Madeleines/Clickable"]
+
+[editable path="TrainPassing/Butterfly/Clickable"]

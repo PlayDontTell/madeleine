@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bop_6.wav-4e3f8746cf3c6ae2914b4f3e99633d85.sample"
+
+[deps]
+
+source_file="res://sound/Bop_6.wav"
+dest_files=[ "res://.import/Bop_6.wav-4e3f8746cf3c6ae2914b4f3e99633d85.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://effects/Fade.tscn" type="PackedScene" id=1]
+[ext_resource path="res://effects/Cursor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/LangScreen.gd" type="Script" id=3]
+[ext_resource path="res://sprites/lang_background.png" type="Texture" id=4]
+[ext_resource path="res://effects/black.png" type="Texture" id=5]
+
+[node name="LangScreen" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="FR" type="TextureButton" parent="Background"]
+margin_left = 35.0
+margin_top = 38.0
+margin_right = 89.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ENG" type="TextureButton" parent="Background"]
+margin_left = 103.0
+margin_top = 38.0
+margin_right = 157.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cache_1" type="Sprite" parent="Background"]
+modulate = Color( 1, 1, 1, 0.215686 )
+position = Vector2( 60, 54.5 )
+scale = Vector2( 2.25, 1.46875 )
+texture = ExtResource( 5 )
+
+[node name="cache_2" type="Sprite" parent="Background"]
+modulate = Color( 1, 1, 1, 0.215686 )
+position = Vector2( 132, 55 )
+scale = Vector2( 2.25, 1.46875 )
+texture = ExtResource( 5 )
+
+[node name="Cursor" parent="." instance=ExtResource( 2 )]
+
+[node name="Fade" parent="." instance=ExtResource( 1 )]
+[connection signal="mouse_entered" from="Background/FR" to="." method="_on_FR_mouse_entered"]
+[connection signal="mouse_exited" from="Background/FR" to="." method="_on_FR_mouse_exited"]
+[connection signal="pressed" from="Background/FR" to="." method="_on_FR_pressed"]
+[connection signal="mouse_entered" from="Background/ENG" to="." method="_on_ENG_mouse_entered"]
+[connection signal="mouse_exited" from="Background/ENG" to="." method="_on_ENG_mouse_exited"]
+[connection signal="pressed" from="Background/ENG" to="." method="_on_ENG_pressed"]

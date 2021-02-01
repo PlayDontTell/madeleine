@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TrainInteriorSound.wav-409d788111fa086d39e9a115df55349a.sample"
+
+[deps]
+
+source_file="res://sound/TrainInteriorSound.wav"
+dest_files=[ "res://.import/TrainInteriorSound.wav-409d788111fa086d39e9a115df55349a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
