@@ -27,8 +27,8 @@ Global="*res://Global.gd"
 
 window/size/width=192
 window/size/height=108
-window/size/test_width=384
-window/size/test_height=216
+window/size/test_width=960
+window/size/test_height=540
 mouse_cursor/custom_image="res://effects/transparent.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
@@ -58,7 +58,8 @@ texture={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
-quality/filters/anisotropic_filter_level=1
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false
+quality/filters/anisotropic_filter_level=1

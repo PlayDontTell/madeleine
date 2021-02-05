@@ -86,6 +86,7 @@ offset = Vector2( 96, 54 )
 [node name="Cadre" parent="." instance=ExtResource( 10 )]
 
 [node name="Cursor" parent="." instance=ExtResource( 8 )]
+visible = false
 position = Vector2( -30.4787, 25.7567 )
 
 [node name="Tween" type="Tween" parent="."]

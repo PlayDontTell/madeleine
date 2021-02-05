@@ -26,7 +26,8 @@ const COLOR_WHITE = Color(4, 4, 4, 1)
 
 
 func _ready():
-	 OS.window_fullscreen =  not DEV_MODE
+#	 OS.window_fullscreen =  not DEV_MODE
+	pass
 
 
 func print_test():
