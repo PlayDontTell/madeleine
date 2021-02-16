@@ -10,7 +10,7 @@ var creditsscene = "res://levels/Creditsscene.tscn"
 
 func _ready():
 	if Global.DEV_MODE:
-		load_scene(title_screen)
+		load_scene(puzzles)
 	else:
 		
 		load_scene(lang_screen)

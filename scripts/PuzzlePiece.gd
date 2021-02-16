@@ -9,6 +9,7 @@ var is_start_piece: bool = false
 var is_wall_piece: bool = false
 var level_position: Array
 var bop_speed: float = 0.1
+var is_last_piece_gotten: bool
 
 
 func initialize_form():
@@ -116,6 +117,7 @@ func set_gotten():
 func set_start_piece():
 	$Sprite.frame += 18
 	$CollisionShape2D.disabled = true
+	$ResetButton.visible = true
 	puzzle_pieces.set_last_piece_gotten(level_position)
 	puzzle_pieces.start_piece = level_position
 
@@ -141,47 +143,132 @@ func _on_PuzzlePiece_input_event(viewport, event, shape_idx):
 
 func is_under_last_gotten_piece(sudo):
 	if level_position[0] > 0 and situation_array[1][1] == 1:
-		if puzzle_pieces.last_piece_gotten[0] + 1 == level_position[0] and puzzle_pieces.last_piece_gotten[1] == level_position[1]:
-			if sudo:
-				get_piece()
-				yield(get_tree().create_timer(bop_speed), "timeout")
-				levels.check_under()
-			return true
-		else:
-			return false
+		var piece_to_check = levels.find_piece([level_position[0] - 1, level_position[1]])
+		if piece_to_check != null:
+			match piece_to_check.situation_array[1][1]:
+				0, 4:
+					return false
+				1:
+					if piece_to_check.is_under_last_gotten_piece(sudo):
+						yield(get_tree().create_timer(0.04), "timeout")
+						if sudo:
+							get_piece()
+							yield(get_tree().create_timer(bop_speed), "timeout")
+							levels.check_under()
+						return true
+				2, 3:
+					if piece_to_check.level_position == puzzle_pieces.last_piece_gotten:
+						if sudo:
+							get_piece()
+							yield(get_tree().create_timer(bop_speed), "timeout")
+							levels.check_under()
+						return true
+					else:
+						return false
 
 
 func is_above_last_gotten_piece(sudo):
 	if level_position[0] < 4 and situation_array[1][1] == 1:
-		if puzzle_pieces.last_piece_gotten[0] - 1 == level_position[0] and puzzle_pieces.last_piece_gotten[1] == level_position[1]:
-			if sudo:
-				get_piece()
-				yield(get_tree().create_timer(bop_speed), "timeout")
-				levels.check_above()
-			return true
-		else:
-			return false
+		var piece_to_check = levels.find_piece([level_position[0] + 1, level_position[1]])
+		if piece_to_check != null:
+			match piece_to_check.situation_array[1][1]:
+				0, 4:
+					return false
+				1:
+					if piece_to_check.is_above_last_gotten_piece(sudo):
+						yield(get_tree().create_timer(0.04), "timeout")
+						if sudo:
+							get_piece()
+							yield(get_tree().create_timer(bop_speed), "timeout")
+							levels.check_above()
+						return true
+				2, 3:
+					if piece_to_check.level_position == puzzle_pieces.last_piece_gotten:
+						if sudo:
+							get_piece()
+							yield(get_tree().create_timer(bop_speed), "timeout")
+							levels.check_above()
+						return true
+					else:
+						return false
 
 
 func is_left_of_last_gotten_piece(sudo):
 	if level_position[1] < 10 and situation_array[1][1] == 1:
-		if puzzle_pieces.last_piece_gotten[1] + 1 == level_position[1] and puzzle_pieces.last_piece_gotten[0] == level_position[0]:
-			if sudo:
-				get_piece()
-				yield(get_tree().create_timer(bop_speed), "timeout")
-				levels.check_left_of()
-			return true
-		else:
-			return false
+		var piece_to_check = levels.find_piece([level_position[0], level_position[1] - 1])
+		if piece_to_check != null:
+			match piece_to_check.situation_array[1][1]:
+				0, 4:
+					return false
+				1:
+					if piece_to_check.is_left_of_last_gotten_piece(sudo):
+						yield(get_tree().create_timer(0.04), "timeout")
+						if sudo:
+							get_piece()
+							yield(get_tree().create_timer(bop_speed), "timeout")
+							levels.check_left_of()
+						return true
+				2, 3:
+					if piece_to_check.level_position == puzzle_pieces.last_piece_gotten:
+						if sudo:
+							get_piece()
+							yield(get_tree().create_timer(bop_speed), "timeout")
+							levels.check_left_of()
+						return true
+					else:
+						return false
 
 
 func is_right_of_last_gotten_piece(sudo):
 	if level_position[1] > -1 and situation_array[1][1] == 1:
-		if puzzle_pieces.last_piece_gotten[1] - 1 == level_position[1] and puzzle_pieces.last_piece_gotten[0] == level_position[0]:
-			if sudo:
-				get_piece()
-				yield(get_tree().create_timer(bop_speed), "timeout")
-				levels.check_right_of()
-			return true
-		else:
-			return false
+		var piece_to_check = levels.find_piece([level_position[0], level_position[1] + 1])
+		if piece_to_check != null:
+			match piece_to_check.situation_array[1][1]:
+				0, 4:
+					return false
+				1:
+					if piece_to_check.is_right_of_last_gotten_piece(sudo):
+						yield(get_tree().create_timer(0.04), "timeout")
+						if sudo:
+							get_piece()
+							yield(get_tree().create_timer(bop_speed), "timeout")
+							levels.check_right_of()
+						return true
+				2, 3:
+					if piece_to_check.level_position == puzzle_pieces.last_piece_gotten:
+						if sudo:
+							get_piece()
+							yield(get_tree().create_timer(bop_speed), "timeout")
+							levels.check_right_of()
+						return true
+					else:
+						return false
+
+
+func set_last_piece_gotten():
+	modulate = Color(0.1, 2, 0.1, 1)
+	is_last_piece_gotten = true
+	if is_start_piece:
+		$ResetButton.visible = false
+	situation_array[1][1] = 2
+
+
+func set_not_last_piece_gotten():
+	modulate = Global.COLOR_DEFAULT
+	is_last_piece_gotten = false
+	if is_start_piece:
+		$ResetButton.visible = true
+
+
+func _on_ResetButton_pressed():
+	if is_start_piece:
+		levels.restart()
+
+
+func _on_ResetButton_mouse_entered():
+	Global.mouse_hovering_count += 1
+
+
+func _on_ResetButton_mouse_exited():
+	if Global.mouse_hovering_count > 0:
+		Global.mouse_hovering_count -= 1

@@ -11,18 +11,18 @@ func _ready():
 	$text_part4.modulate = Global.COLOR_TRANPARENT
 	
 	if Global.language == "eng":
-		$text_part1.bbcode_text = "\"When a distant past nothing subsists ..."
+		$text_part1.bbcode_text = "\"When from a distant past nothing subsists ..."
 		$text_part2.bbcode_text = """
 
 
-... more fragile but more enduring, the smell and taste are still long ..."""
+... more fragile but more enduring, the smell and taste are still vivid ..."""
 		$text_part3.bbcode_text = """
 
 
 
 
 
-... as souls, to wear without flinching, the immense edifice of memory.\" """
+... like souls that wear without flinching, the immense edifice of memory.\" """
 	
 	$Logo.modulate = Global.COLOR_BLACK
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

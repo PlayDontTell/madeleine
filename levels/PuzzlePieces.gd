@@ -8,6 +8,6 @@ var historic: Array = []
 func set_last_piece_gotten(value):
 	last_piece_gotten = value
 	for i in get_children():
-		i.modulate = Global.COLOR_DEFAULT
-	get_node("..").find_piece(value).modulate = Color(0.1, 2, 0.1, 1)
+		i.set_not_last_piece_gotten()
+	get_node("..").find_piece(value).set_last_piece_gotten()
 	

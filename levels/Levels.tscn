@@ -26,86 +26,86 @@
 extents = Vector2( 81, 41 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 17 )
+atlas = ExtResource( 21 )
 region = Rect2( 0, 0, 192, 108 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 16 )
-region = Rect2( 0, 0, 192, 108 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 192, 108 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 192, 108 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 20 )
-region = Rect2( 0, 0, 192, 108 )
-
-[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 192, 108 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 192, 108 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 13 )
 region = Rect2( 0, 0, 192, 108 )
 
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 192, 108 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 192, 108 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 192, 108 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 192, 108 )
+
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 21 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 192, 108 )
 
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "level_6",
+"name": "level_8",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "level_5",
+"name": "level_4",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "level_0",
+"name": "level_3",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "level_1",
+"name": "level_2",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ) ],
 "loop": true,
-"name": "level_7",
+"name": "level_0",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ) ],
 "loop": true,
-"name": "level_4",
+"name": "level_7",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 8 ) ],
 "loop": true,
-"name": "level_3",
+"name": "level_6",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 9 ) ],
 "loop": true,
-"name": "level_2",
+"name": "level_5",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 10 ) ],
 "loop": true,
-"name": "level_8",
+"name": "level_1",
 "speed": 5.0
 } ]
 
@@ -178,7 +178,6 @@ __meta__ = {
 [node name="rails" type="AnimatedSprite" parent="."]
 position = Vector2( 96, 105 )
 frames = SubResource( 15 )
-frame = 1
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -187,7 +186,6 @@ __meta__ = {
 [node name="TinyTrain" type="AnimatedSprite" parent="."]
 position = Vector2( -401, 98 )
 frames = SubResource( 18 )
-frame = 1
 playing = true
 centered = false
 

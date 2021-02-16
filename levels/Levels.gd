@@ -219,6 +219,9 @@ func is_level_complete():
 			current_piece_neighbours.append(has_left_piece($PuzzlePieces.last_piece_gotten, current_level))
 			current_piece_neighbours.append(has_right_piece($PuzzlePieces.last_piece_gotten, current_level))
 			if not current_piece_neighbours.has(1):
+				yield(get_tree().create_timer(0.3), "timeout")
+				$Errorsound.play()
+				yield(get_tree().create_timer(0.8), "timeout")
 				restart()
 			return
 	for i in $PuzzlePieces.get_children():
@@ -228,9 +231,6 @@ func is_level_complete():
 
 
 func restart():
-	yield(get_tree().create_timer(0.3), "timeout")
-	$Errorsound.play()
-	yield(get_tree().create_timer(0.8), "timeout")
 	var pieces_to_reset = $PuzzlePieces.historic
 	pieces_to_reset.invert()
 	

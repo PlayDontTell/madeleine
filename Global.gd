@@ -3,7 +3,7 @@ extends Node
 
 
 # Meta variables
-const DEV_MODE: bool = not true
+const DEV_MODE: bool = true
 var count_test: int = 0
 var last_level: int = 0
 var language: String = "eng"
@@ -26,8 +26,7 @@ const COLOR_WHITE = Color(4, 4, 4, 1)
 
 
 func _ready():
-#	 OS.window_fullscreen =  not DEV_MODE
-	pass
+	OS.window_fullscreen =  not DEV_MODE
 
 
 func print_test():
